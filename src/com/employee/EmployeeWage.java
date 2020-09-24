@@ -3,14 +3,11 @@ package com.employee;
 public class EmployeeWage {	
 	public static final int Is_Full_Time=2;
 	public static final int Is_Part_Time=1;
-	public static final int Emp_rate_per_hour=20;
-	public static final int Working_Days_Per_Month=20;
-	public static final int Max_Hours_Working=100;
 	
-	public static void computeWage() {
+	public static int computeWage(String company,int empRatePerHour,int workingDaysPerMonth,int maxHoursWorking ) {
 		int TotalHours=0,TotalDays=0;
-		while(TotalHours <= Max_Hours_Working && TotalDays<Working_Days_Per_Month) {
-			int emphrs=0,empwage=0;
+		while(TotalHours <= maxHoursWorking && TotalDays<workingDaysPerMonth) {
+			int emphrs=0;
 			TotalDays++;
 		double empcheck =Math.floor(Math.random()*10)% 3;
 		switch((int)empcheck) {
@@ -23,10 +20,13 @@ public class EmployeeWage {
 		TotalHours+=emphrs;
 		System.out.println("Emp Hours :" +emphrs+" In Day :"+TotalDays);
 		}
-		int Total=TotalHours*Emp_rate_per_hour;
+		int Total=TotalHours*empRatePerHour;
 		System.out.println("Total Emp Wage :" +Total+" In Total Hours :"+TotalHours);
+		return Total;
 		}
 		public static void main(String[] args) {
-		computeWage();
-         }
+		computeWage("DMart",20,20,100);
+		computeWage("Reliance",10,22,120);
+         
+}
 }
