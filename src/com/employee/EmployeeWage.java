@@ -1,6 +1,6 @@
 package com.employee;
 
-public class EmployeeWage {	
+public class EmployeeWage implements EmpWageInterface {	
 	public static final int Is_Full_Time=2;
 	public static final int Is_Part_Time=1;
 	private int numberOfCompanies=0;
@@ -9,18 +9,18 @@ public class EmployeeWage {
 	public EmployeeWage() {
 		companyEmpWageArray=new companyEmpWage[5];
 	}
-	private void addCompanyEmpWage(String company,int empRatePerHour,int workingDaysPerMonth,int maxHoursWorking) {
+	public void addCompanyEmpWage(String company,int empRatePerHour,int workingDaysPerMonth,int maxHoursWorking) {
 		companyEmpWageArray[numberOfCompanies]=new companyEmpWage(company,empRatePerHour,workingDaysPerMonth,maxHoursWorking);
 		numberOfCompanies++;
 	}
-	    private void computeWage() {
+	    public void computeWage() {
 		for(int i=0;i<numberOfCompanies;i++)
 		{
 			companyEmpWageArray[i].setTotalWage(this.computeWage(companyEmpWageArray[i]));
 			System.out.println(companyEmpWageArray[i]);
 		}
 	    }
-		private int computeWage(companyEmpWage companyEmpWage)
+		public int computeWage(companyEmpWage companyEmpWage)
 		{
 		int TotalHours=0,TotalDays=0;
 		while(TotalHours <= companyEmpWage.maxHoursWorking && TotalDays<companyEmpWage.workingDaysPerMonth) {
